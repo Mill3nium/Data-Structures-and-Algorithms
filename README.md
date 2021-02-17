@@ -1,6 +1,6 @@
 # Data Structures and Algorithms
 
-A collection of programming projects from a course in algorithms and data structures using Java.
+A collection of programming projects from a course in data structures and algorithms using Java.
 The projects include backtracking, double-linked list, recursion and more.
 
 Use this repo to study or review your knowledge and do not forget to star and collaborate! :metal:
