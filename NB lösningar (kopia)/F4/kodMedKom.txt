@@ -1,0 +1,79 @@
+
+package NB81;
+
+import java.util.Arrays;
+
+public class ArrayQueue<E>{
+	private int front, rear, size, maxSize;
+	private E[] data;
+
+	public ArrayQueue(int initialSize){
+		size = 0;
+		front = 0;
+		maxSize = initialSize;
+		rear = maxSize-1;//rear = 0 (vi vill att rear ska hamna på plats 0 efter vi lagt in första elementet)
+		data = (E[]) new Object[maxSize];
+	}
+
+	public boolean offer(E element){
+		if(size==maxSize)
+			reallocate();
+		//data[rear] = element; Byt plats på denna rad och raden under pga att rear måste uppdateras först
+        rear = (rear + 1 )%maxSize;//rear+1%maxSize; blir fel i beräkningen, vi vill öka rare med 1,
+									// om den blir = maxSize ska den bli = 0.
+		data[rear] = element;
+		size++;
+		return true;
+	}
+
+	public E peek(){
+		if(size==0) return null;
+		return data[front];
+	}
+
+	public E poll(){
+		if(size==0){
+			return null;
+		}else{
+			size--;
+			E element = data[front];
+			front =(front + 1 ) %maxSize;//front+1%maxSize; korrigering, öka front med 1 + se till att bli 0 om = maxSize(slutet av arrayen)
+			return element;
+		}	
+	}
+
+	private void reallocate() {
+		//maxSize*=2;
+		//data= Arrays.copyOf(data,maxSize); Går ej att anv arrCopy pga att vi måste behålla ordningen från gamla arrayen.
+		int newMaxSize = 2* maxSize; //Front kan tex ligga mitt i arrayen
+		E[] newData= (E[]) new Object[newMaxSize];
+		int j = front;
+		for(int i = 0; i<size; i++){
+			newData[i] = data[i];
+			j = (j + 1) % maxSize;
+		}
+		front = 0;
+		rear = size-1;
+		maxSize= newMaxSize;
+		data = newData;
+	}
+
+	@Override
+	public String toString(){
+		StringBuffer sb = new StringBuffer();
+
+		for(int i = front; i < data.length; i++){
+			if (i != 0) {
+				sb.append(", ");
+			}
+			if(data[i] == null){
+				sb.append(" ");
+			}
+			if(data[i]!= null){
+				sb.append(data[i]);
+			}
+		}
+
+		return sb.toString();
+	}
+}

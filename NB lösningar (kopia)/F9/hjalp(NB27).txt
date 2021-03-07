@@ -1,0 +1,9 @@
+NB27
+
+CompareTo(a)
+https://www.youtube.com/watch?v=IyQVEdFw0Ek&ab_channel=shadsluiter
+
+Compare(b)
+https://www.youtube.com/watch?v=mlHvBFzHx7Q&ab_channel=GTTestAutomation
+
+https://www.youtube.com/watch?v=SzzSwvQfKyk&ab_channel=HackerRank
